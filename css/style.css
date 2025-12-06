@@ -1,0 +1,264 @@
+/* =========================================================
+   RESET & BASE
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "JetBrains Mono", monospace;
+}
+
+/* Paleta Monokai (variáveis) */
+:root {
+    --bg-dark: #1e1f1c;
+    --fg: #f8f8f2;
+    --green: #a6e22e;
+    --pink: #e83f67;
+    --pink-soft: #fd5e7f;
+    --border: #75715e;
+    --aqua: #66d9ef;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--fg);
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+i {
+    margin-right: 6px;
+    color: var(--pink-soft);
+}
+
+p, strong, li {
+    font-size: 1rem;
+    color: var(--fg);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+header {
+    margin-bottom: 40px;
+    padding-left: 15px;
+    border-left: 4px solid var(--pink);
+    opacity: 0;
+    animation: fadeSlide 0.6s ease-out forwards;
+    position: relative;
+}
+
+.header-decor {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: var(--pink);
+    opacity: 0;
+    animation: fadeSlide 0.6s ease-out forwards;
+    animation-delay: 0.1s;
+    margin-bottom: 10px;
+}
+
+.header-decor span {
+    opacity: 0.8;
+}
+
+header::after {
+    content: "\f120"; /* terminal */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 120px;
+    color: rgba(232, 63, 103, 0.45);
+    position: absolute;
+    right: 200px;
+    top: -10px;
+    pointer-events: none;
+}
+
+/* Divider colorida */
+.color-divider {
+    width: 100%;
+    height: 3px;
+    margin: 12px 0 18px 0;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--pink), var(--green));
+    opacity: 0;
+    animation: fadeSlide 0.6s ease-out forwards;
+}
+
+/* =========================================================
+   SEÇÕES BASE
+   ========================================================= */
+section {
+    margin-bottom: 50px;
+}
+
+#sobre, #servicos, #habilidades {
+    border-left: 4px solid var(--pink);
+    padding-left: 15px;
+    opacity: 0;
+    animation: fadeSlide 0.7s ease-out forwards;
+}
+
+ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================================================
+   SERVIÇOS + HABILIDADES LADO A LADO
+   ========================================================= */
+#servicos-habilidades {
+    display: flex;
+    gap: 40px;
+}
+
+#servicos, #habilidades {
+    flex: 1;
+}
+
+/* =========================================================
+   PROJETOS
+   ========================================================= */
+.projeto {
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeSlide 0.8s ease-out forwards;
+}
+
+.projeto h3 {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+/* GRID DE PROJETOS */
+#sites-exemplo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+/* IFRAME PREVIEW */
+.preview {
+    margin-top: 10px;
+    width: 100%;
+    height: 360px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.35);
+}
+
+.preview iframe {
+    width: 180%;
+    height: 180%;
+    border: none;
+    transform: scale(0.55);
+    transform-origin: top left;
+    filter: brightness(0.88);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeSlide 0.9s ease-out forwards;
+}
+
+footer span {
+    color: var(--aqua);
+}
+
+/* =========================================================
+   ANIMAÇÕES GERAIS
+   ========================================================= */
+@keyframes fadeSlide {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+section, header, footer, .projeto {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   CURSOR DOT
+   ========================================================= */
+.cursor-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pink);
+    opacity: 0.5;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: fadeCursor 0.4s linear forwards;
+}
+
+@keyframes fadeCursor {
+    from { opacity: 0.5; transform: scale(1); }
+    to { opacity: 0; transform: scale(3); }
+}
+
+/* Sparks */
+.spark {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pink-soft);
+    animation: sparkAnim 0.3s linear forwards;
+}
+
+@keyframes sparkAnim {
+    from { transform: scale(1); opacity: 1; }
+    to   { transform: scale(4); opacity: 0; }
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media (max-width: 900px) {
+    #sites-exemplo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    #servicos-habilidades {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    #sites-exemplo {
+        grid-template-columns: 1fr;
+    }
+}
