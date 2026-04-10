@@ -13,9 +13,9 @@ function type() {
     }
 
     if (i < txt.length) {
-        target.textContent += txt[i];
+        target.textContent = txt.slice(0, i);
         i++;
-        setTimeout(type, 16);
+        setTimeout(type, 12 + Math.random() * 18);
     }
 }
 

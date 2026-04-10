@@ -6,8 +6,8 @@ if (
 ) {
     setInterval(() => {
         brandMark.style.transform =
-            brandMark.style.transform === "translateY(-1px)"
-                ? "translateY(0)"
-                : "translateY(-1px)";
-    }, 1400);
+            brandMark.style.transform === "translateY(-3px) scale(1.05)"
+                ? "translateY(0) scale(1)"
+                : "translateY(-3px) scale(1.05)";
+    }, 1200);
 }
