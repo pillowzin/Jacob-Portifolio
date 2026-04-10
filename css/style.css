@@ -393,7 +393,7 @@ img, iframe {
     margin: 18px 0 22px;
 }
 
-.project-preview {
+/*.project-preview {
     min-height: 360px;
     border: 1px solid var(--line);
     aspect-ratio: 16 / 10;
@@ -409,7 +409,7 @@ img, iframe {
     border: 0;
     transform-origin: top left;
     filter: saturate(0.95) contrast(1.02) brightness(0.92);
-}
+}*/
 
 .process-card strong {
     color: var(--accent);
@@ -547,9 +547,9 @@ img, iframe {
         padding: 26px 22px;
     }
 
-    .project-preview {
+/*    .project-preview {
         min-height: 280px;
-    }
+    }*/
 }
 
 /* Mobile Pequeno (560px) */
@@ -570,11 +570,21 @@ img, iframe {
         width: 100%;
     }
 
-    .project-preview iframe {
-        width: 220%;
-        height: 220%;
-        transform: scale(0.455);
-    }
+/*    .project-preview {
+        position: relative;
+        overflow: hidden;
+    }*/
+
+/*    .project-preview iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        transform: none;
+    }*/
 }
 
 /* Acessibilidade */
@@ -595,4 +605,146 @@ img, iframe {
     .cursor-dot {
         display: none;
     }
+}
+
+/* MOCKUP DE BROWSER */
+
+.browser-mockup {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0f141b;
+}
+
+/* Barra de cima */
+.browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #0b0f14;
+    border-bottom: 1px solid var(--line);
+}
+
+.browser-bar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.browser-bar span:nth-child(1) { background: #ff5f56; }
+.browser-bar span:nth-child(2) { background: #ffbd2e; }
+.browser-bar span:nth-child(3) { background: #27c93f; }
+
+/* Conteúdo */
+.browser-content {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* iframe CONTROLADO */
+.browser-content iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+/* =========================
+   PROJECT PREVIEW (FIX REAL)
+========================= */
+
+.project-preview {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: #0b0f14;
+    overflow: hidden;
+
+    /* controla tamanho real */
+    aspect-ratio: 16 / 10;
+    display: flex;
+    flex-direction: column;
+}
+
+/* MOCKUP */
+.browser-mockup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+/* barra */
+.browser-bar {
+    flex-shrink: 0;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    background: #0a0e13;
+    border-bottom: 1px solid var(--line);
+}
+
+.browser-bar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.browser-bar span:nth-child(1) { background: #ff5f56; }
+.browser-bar span:nth-child(2) { background: #ffbd2e; }
+.browser-bar span:nth-child(3) { background: #27c93f; }
+
+/* área do site */
+.browser-content {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: #000;
+}
+
+/* iframe SEM BUG */
+.browser-content iframe {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    /* isso aqui é o segredo */
+    display: block;
+}
+
+.browser-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+/* efeito profissional */
+.project-preview:hover .browser-content img {
+    transform: scale(1.05);
+}
+.project-preview {
+    cursor: pointer;
+}
+
+.project-preview:hover {
+    transform: translateY(-4px);
+    transition: 0.2s ease;
 }
